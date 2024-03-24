@@ -3,10 +3,11 @@
   import { debounce } from "../utils/debounce";
 
   let response = [];
+  const apiKey = import.meta.env.VITE_IMDBAPI_KEY;
 
   const handleSearch = debounce(async () => {
     if (value.length > 1) {
-      response = fetch(`https://omdbapi.com/?apikey=11a59b1e&s=${value}`)
+      response = fetch(`https://omdbapi.com/?apikey=${apiKey}=${value}`)
         .then((res) =>
           !res.ok ? new Error("Something bad happened") : res.json(),
         )
